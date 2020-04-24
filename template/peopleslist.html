@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+
+{% block title %} Сотрудники {% endblock %}
+{% block content %}
+
+<h2>Список сотрудников</h2>
+<!--<form action="" method="get">-->
+<!--    {% csrf_token %}-->
+<!--    {{ form.departmentname }}-->
+<!--    </form>-->
+ <form method="get">
+        {{ filter.form.as_p }}
+        <input type="submit" />
+    </form>
+
+<table class="table table-striped ">
+
+    <thead>
+    <tr>
+        <th><em>Имя</em></th>
+        <th><em>Фамилия</em></th>
+        <th><em>Отдел
+
+
+        </em></th>
+        <th><em>Статус</em></th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for p in persons %}
+    <tr>
+        <td><a href="/person/{{p.pk}}">{{p.firstname}} - {{p.pk}} </a></td>
+        <td>{{p.surname}}</td>
+        <td>{{p.department}}</td>
+        {% if p.endworkdate == None %}
+        <td>Работает по настоящее время</td>
+        {% else %}
+        <td>Уволен: {{p.endworkdate}}</td>
+        {% endif %}
+    </tr>
+    {% endfor %}
+    </tbody>
+
+
+
+</table>
+{% endblock %}

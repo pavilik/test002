@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %} Подробно сотрудники {% endblock %}
+{% block content %}
+
+<h1><br/>{{object.surname}} </h1>
+<h3>{{object.firstname}} {{object.otch}} </h3>
+
+<table class="table table-dark">
+    <tbody>
+
+    <tr>
+        <td>Отдел:</td>
+        <td>{{object.department}}</td>
+    </tr>
+    <tr>
+        <td>Должность:</td>
+        <td>{{object.jobtitle}}</td>
+    </tr>
+    <tr>
+        <td>Работает с:</td>
+        <td>{{object.startworkdate}}</td>
+    </tr>
+    <tr>
+        <td>Работает по:</td>
+        <td>{{object.endworkdate}}</td>
+    </tr>
+    <tr>
+        <td>Дата рождения:</td>
+        <td>{{object.borndate}}</td>
+    </tr>
+      <tr>
+        <td>Телефон:</td>
+        <td>{{object.phonenum}}</td>
+    </tr>
+     <tr>
+        <td>Email:</td>
+        <td>{{object.email}}</td>
+    </tr>
+   </tbody>
+</table>
+{% endblock %}

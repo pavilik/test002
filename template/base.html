@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
+          media="screen" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous">
+
+    <style type="text/css">
+      body {
+        padding-top: 20px;
+        padding-bottom: 60px;
+      }
+
+
+      /* Customize the navbar links to be fill the entire space of the .navbar */
+      .navbar .navbar-inner {
+        padding: 0;
+      }
+      .navbar .nav {
+        margin: 0;
+        display: table;
+        width: 100%;
+      }
+      .navbar .nav li {
+        display: table-cell;
+        width: 1%;
+        float: none;
+      }
+      .navbar .nav li a {
+        font-weight: bold;
+        text-align: center;
+        border-left: 1px solid rgba(255,255,255,.75);
+        border-right: 1px solid rgba(0,0,0,.1);
+      }
+      .navbar .nav li:first-child a {
+        border-left: 0;
+        border-radius: 3px 0 0 3px;
+      }
+      .navbar .nav li:last-child a {
+        border-right: 0;
+        border-radius: 0 3px 3px 0;
+      }
+
+    </style>
+
+    <title>
+        {% block title %}
+        {% endblock %}
+    </title>
+</head>
+<nav>
+
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <ul class="nav navbar-nav">
+        <li><a href="/" class="page-link">Главная</a></li>
+        <li><a href="/admin" class="page-link">Админка</a></li>
+        <li><a href="/peopleslist" class="page-link">Список людей </a></li>
+        <li><a href="/personlist" class="page-link">Список людей black </a></li>
+        </li>
+    </ul>
+
+</nav>
+{% block content %}
+{% endblock %}
+{% block pagination %}
+  {% if is_paginated %}
+    <nav aria-label="Page navigation conatiner"></nav>
+<ul class="pagination justify-content-center">
+      <div class="pagination">
+   <table>
+          <span class="page-links">
+              {% if page_obj.has_previous %}
+           <tr>   <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&{{ key }}={{ value }}{% endifnotequal %}{% endfor %}" class="page-link" >&laquo; предыдущая</a>
+           </tr>
+              {% endif %}
+              <span class="page-current">
+             <tr>
+                  стр. {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}.
+             </tr>
+              </span>
+              {% if page_obj.has_next %}
+              <tr>
+                 <a href="{{ request.path }}?page={{ page_obj.next_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&{{ key }}={{ value }}{% endifnotequal %}{% endfor %}" class="page-link">следующая&raquo;</a>
+              </tr>
+              {% endif %}
+          </span>
+       </table>
+      </div>
+</ul>
+</nav>
+  {% endif %}
+{% endblock %}
+</body>
+</html>
