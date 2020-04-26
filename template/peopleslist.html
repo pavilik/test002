@@ -9,8 +9,11 @@
 <!--    {% csrf_token %}-->
 <!--    {{ form.departmentname }}-->
 <!--    </form>-->
- <form method="get">
+
+
+ <form method="get" onchange="submit">
         {{ filter.form.as_p }}
+
         <input type="submit" />
     </form>
 

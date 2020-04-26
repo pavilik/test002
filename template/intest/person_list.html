@@ -5,6 +5,19 @@
 
 <h2>Список сотрудников</h2>
 
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <ul class="nav navbar-nav">
+
+        {%for k,v in pagination_seven.items %}
+
+       <li><a href="/personlist/?symbol={{k}}" class="page-link">{{v}} </a></li>
+
+        {% endfor %}
+
+    </ul>
+
+</nav>
+
 <table class="table table-dark">
 
     <thead>
@@ -15,6 +28,7 @@
         <th><em>Статус</em></th>
     </tr>
     </thead>
+
     <tbody>
     {%for p in object_list %}
     <tr>
