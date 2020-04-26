@@ -26,7 +26,7 @@ urlpatterns = [
  #   path('publication/<int:number>', views.publication),
     path('peopleslist/', views.peoples),
     path('personlist/', PersonList.as_view(),name='article-list'),
-    path('peoplelistfilter/', views.filterlist,name='filter'),
+    # path('peoplelistfilter/', views.filterlist,name='filter'),
   #  path('dep', views.CreateDepartmentView.as_view(),name = 'department'),
     path('personlist/filter/department/<department_id>', PersonList.as_view(),name='filter-article-list'),
     url(r'^person/(?P<pk>\d+)$', views.PersonDetailView.as_view(), name='person-detail'),
